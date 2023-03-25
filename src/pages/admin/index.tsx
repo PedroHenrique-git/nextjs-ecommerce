@@ -1,12 +1,24 @@
+import { DEFAULT_QUERY_OPTIONS } from '@config/index';
 import { Admin } from '@containers/Admin/Admin';
-import getClients from '@sdk/clients/getClients';
-import getOrders from '@sdk/order/getOrders';
-import { GetStaticProps } from 'next';
-import { dehydrate, QueryClient, useQuery } from 'react-query';
+import { useQuery } from 'react-query';
+import ClientService from 'src/services/client/client.service';
+import OrderService from 'src/services/order/order.service';
+
+const clientService = new ClientService('admin');
+const orderService = new OrderService('admin');
 
 export default function Index() {
-  const { data: clients } = useQuery('clients', getClients, { enabled: false });
-  const { data: orders } = useQuery('orders', getOrders, { enabled: false });
+  const { data: clients } = useQuery(
+    'clients',
+    () => clientService.find({ sort: 'desc', take: '5' }),
+    DEFAULT_QUERY_OPTIONS,
+  );
+
+  const { data: orders } = useQuery(
+    'orders',
+    () => orderService.find({ sort: 'desc', take: '5', showClient: 'true' }),
+    DEFAULT_QUERY_OPTIONS,
+  );
 
   return (
     <Admin
@@ -15,16 +27,3 @@ export default function Index() {
     />
   );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery('clients', getClients);
-  await queryClient.prefetchQuery('orders', getOrders);
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-};

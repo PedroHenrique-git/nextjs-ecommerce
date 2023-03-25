@@ -1,6 +1,6 @@
 import { Container } from '@chakra-ui/react';
-import Header from '@components/sections/admin/Header';
 import { useRouter } from 'next/router';
+import Header from 'src/sections/admin/shared/Header';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   const { asPath } = useRouter();

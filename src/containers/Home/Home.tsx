@@ -1,5 +1,4 @@
 import { Box, Text } from '@chakra-ui/react';
-import { Counter } from '@components/Counter/Counter';
 
 export const Home = ({ title }: { title: string }) => {
   return (
@@ -13,7 +12,6 @@ export const Home = ({ title }: { title: string }) => {
       <Text as="h1" textAlign="center">
         {title}
       </Text>
-      <Counter />
     </Box>
   );
 };

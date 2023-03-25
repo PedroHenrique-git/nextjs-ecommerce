@@ -1,6 +1,6 @@
 import { Box, Heading } from '@chakra-ui/react';
-import Info from '@components/sections/admin/Info/Info';
-import LastOrders from '@components/sections/admin/LastOrders';
+import LastOrders from 'src/sections/admin/home/LastOrders';
+import Info from 'src/sections/admin/shared/Info';
 
 interface AdminProps {
   quantityOfClients: number;

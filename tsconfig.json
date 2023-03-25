@@ -17,8 +17,10 @@
     "incremental": true,
     "paths": {
       "@containers/*": ["./src/containers/*"],
+      "@sections/*": ["./src/components/*"],
       "@components/*": ["./src/components/*"],
       "@sdk/*": ["./src/sdk/*"],
+      "@services/*": ["./src/services/*"],
       "@utils/*": ["./src/utils/*"],
       "@config/*": ["./src/config/*"]
     }
