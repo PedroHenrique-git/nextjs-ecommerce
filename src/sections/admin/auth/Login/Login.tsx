@@ -83,7 +83,6 @@ const Login = () => {
             placeholder="example@email.com"
             {...register('email')}
           />
-          {}
           {errors.email && (
             <FormErrorMessage>{errors.email.message}</FormErrorMessage>
           )}

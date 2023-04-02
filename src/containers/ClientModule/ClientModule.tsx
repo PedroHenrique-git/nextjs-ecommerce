@@ -2,6 +2,7 @@ import { Box, Heading } from '@chakra-ui/react';
 import { Action } from '@sdk/pagination';
 import { Dispatch } from 'react';
 import ClientList from 'src/sections/admin/client/ClientList/ClientList';
+import CreateClient from 'src/sections/admin/client/CreateClient/CreateClient';
 
 interface Props {
   title: string;
@@ -20,6 +21,7 @@ export const ClientModule = ({ title, clientData, dispatch }: Props) => {
       >
         {title}
       </Heading>
+      <CreateClient />
       <ClientList clientData={clientData} dispatch={dispatch} />
     </Box>
   );

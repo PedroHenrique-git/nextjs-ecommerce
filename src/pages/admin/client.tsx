@@ -11,7 +11,7 @@ export default function Client() {
   const { page, sort, take } = state;
 
   const { data } = useQuery({
-    queryKey: [page, sort, take],
+    queryKey: ['client-module', page, sort, take],
     queryFn: () => clientService.find({ page, sort, take }),
     ...DEFAULT_QUERY_OPTIONS,
   });

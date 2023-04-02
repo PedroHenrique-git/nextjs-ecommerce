@@ -1,10 +1,10 @@
-import { Box, Button, ListItem, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, ListItem, SimpleGrid, Text } from '@chakra-ui/react';
 import { DEFAULT_QUERY_OPTIONS } from '@config/index';
 import ClientService from '@services/client/client.service';
-import { FaRegEdit } from 'react-icons/fa';
-import { MdDelete } from 'react-icons/md';
 import { useQuery } from 'react-query';
 import ClientDetails from '../ClientDetails/ClientDetails';
+import DeleteClient from '../DeleteClient/DeleteClient';
+import UpdateClient from '../UpdateClient/UpdateClient';
 
 interface Props {
   client: Client;
@@ -82,13 +82,9 @@ const ClientCard = ({ client }: Props) => {
             alignItems={'center'}
             justifyContent={'flex-end'}
           >
-            <Button background={'transparent'}>
-              <FaRegEdit />
-            </Button>
+            <UpdateClient client={data} />
             <ClientDetails client={data} />
-            <Button background={'transparent'}>
-              <MdDelete />
-            </Button>
+            <DeleteClient client={data} />
           </Box>
         </Box>
       </SimpleGrid>

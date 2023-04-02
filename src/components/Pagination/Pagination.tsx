@@ -8,15 +8,18 @@ interface Props {
 }
 
 const Pagination = ({ dispatch, paginationInfo }: Props) => {
+  const { prevPageUrl, nextPageUrl } = paginationInfo;
+
   return (
     <Box display={'flex'} alignItems={'center'} gap={'15'} margin={'25px 0'}>
       <Button
         onClick={() =>
           dispatch({
             type: 'set_prev_page',
-            payload: { prevPageUrl: paginationInfo.prevPageUrl },
+            payload: { prevPageUrl },
           })
         }
+        disabled={!prevPageUrl}
       >
         prev
       </Button>
@@ -24,9 +27,10 @@ const Pagination = ({ dispatch, paginationInfo }: Props) => {
         onClick={() =>
           dispatch({
             type: 'set_next_page',
-            payload: { nextPageUrl: paginationInfo.nextPageUrl },
+            payload: { nextPageUrl },
           })
         }
+        disabled={!nextPageUrl}
       >
         next
       </Button>

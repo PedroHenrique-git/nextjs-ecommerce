@@ -1,4 +1,5 @@
-import { Box, Heading } from '@chakra-ui/react';
+import { Box, Heading, Link } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import AdminMenu from '../Menu';
 
 interface Props {
@@ -19,9 +20,15 @@ const Header = ({ title }: Props) => {
     >
       <Box display="flex" alignItems={'center'} gap={'5'}>
         <AdminMenu />
-        <Heading fontSize={'large'} color={'gray.900'}>
-          {title}
-        </Heading>
+        <Link as={NextLink} href="/admin" _hover={{ textDecoration: 'none' }}>
+          <Heading
+            fontSize={'large'}
+            color={'gray.900'}
+            textDecoration={'none'}
+          >
+            {title}
+          </Heading>
+        </Link>
       </Box>
     </Box>
   );
